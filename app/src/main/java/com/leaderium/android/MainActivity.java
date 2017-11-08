@@ -182,4 +182,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
     }
+    public void toCases (View view){
+        Intent toCase = new Intent(MainActivity.this, proektoria_cases.class);
+        startActivity(toCase);
+    }
 }
