@@ -86,17 +86,8 @@ public class proektoria_cases extends AppCompatActivity {
                         requestCreator.resize(65,40);
                     }
                 })
-                .addAction(R.id.right_text_button, new TextViewAction(this)
-                        .setText("Derecha")
-                        .setTextResourceColor(R.color.accent_material_dark)
-                        .setListener(new OnActionClickListener() {
-                            @Override
-                            public void onActionClicked(View view, Card card) {
-                                Toast.makeText(proektoria_cases.this, "You have pressed the right button", Toast.LENGTH_SHORT).show();
-                            }
-                        }))
                 .addAction(R.id.left_text_button, new TextViewAction(this)
-                        .setText("Izquierda")
+                        .setText("Подробнее...")
                         .setTextResourceColor(R.color.black_button)
                         .setListener(new OnActionClickListener() {
                             @Override
