@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
@@ -57,32 +58,51 @@ public class proektoria_cases extends AppCompatActivity {
     }
 
     public Card setCases(final int position) {
-        
+        for (int i = 0; i < description.size(); i++){
+            if (description.get(i).length() > 30){
+                description.get(i).replaceAll(Pattern.quote(description.get(i)), description.get(i).substring(0,30));
+            }
+        }
+        for (int i = 0; i < title.size(); i++){
+            if (title.get(i).length() > 10){
+                title.get(i).replaceAll(Pattern.quote(title.get(i)), title.get(i).substring(0,10));
+            }
+        }
+
+
+
         StringBuilder descriptionCase = new StringBuilder();
         descriptionCase.append(description.get(position));
 
         return new Card.Builder(this)
                 .withProvider(new CardProvider())
-                .setLayout(R.layout.material_basic_image_buttons_card_layout)
+                .setLayout(R.layout.material_image_with_buttons_card)
                 .setTitle(title.get(position))
-                .setTitleGravity(Gravity.END)
                 .setDescription(description.get(position))
-                .setDescriptionGravity(Gravity.END)
                 .setDrawable(img.get(position))
                 .setDrawableConfiguration(new CardProvider.OnImageConfigListener() {
                     @Override
                     public void onImageConfigure(@NonNull RequestCreator requestCreator) {
-                        requestCreator.fit();
+                        requestCreator.resize(65,40);
                     }
                 })
                 .addAction(R.id.right_text_button, new TextViewAction(this)
                         .setText("Derecha")
-                        .setTextResourceColor(R.color.orange_button)
+                        .setTextResourceColor(R.color.accent_material_dark)
                         .setListener(new OnActionClickListener() {
                             @Override
                             public void onActionClicked(View view, Card card) {
-                                Toast.makeText(proektoria_cases.this, "You have pressed the right button on card " + card.getProvider().getTitle(), Toast.LENGTH_SHORT).show();
-                                card.dismiss();
+                                Toast.makeText(proektoria_cases.this, "You have pressed the right button", Toast.LENGTH_SHORT).show();
+                            }
+                        }))
+                .addAction(R.id.left_text_button, new TextViewAction(this)
+                        .setText("Izquierda")
+                        .setTextResourceColor(R.color.black_button)
+                        .setListener(new OnActionClickListener() {
+                            @Override
+                            public void onActionClicked(View view, Card card) {
+                                Log.d("ADDING", "CARD");
+                                Toast.makeText(proektoria_cases.this, "Added new card", Toast.LENGTH_SHORT).show();
                             }
                         }))
                 .endConfig()
