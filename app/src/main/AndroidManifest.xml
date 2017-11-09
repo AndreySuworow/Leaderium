@@ -27,7 +27,8 @@
         <activity android:name=".CoursesDetailActivity" />
         <activity android:name=".proektoria_cases" />
         <activity android:name=".ProektoriaCompaniesActivity" />
-        <activity android:name=".full_description"></activity>
+        <activity android:name=".full_description" />
+        <activity android:name=".BotAshot"></activity>
     </application>
 
 </manifest>

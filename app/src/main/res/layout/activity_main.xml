@@ -29,6 +29,16 @@
             android:textColor="#FFFFFF" />
     </android.support.v7.widget.Toolbar>
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:onClick="toBot"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="63dp"
+        android:text="Button" />
+
 
 </RelativeLayout>
 

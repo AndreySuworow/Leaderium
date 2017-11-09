@@ -194,4 +194,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent toCase = new Intent(MainActivity.this, ProektoriaCasesActivity.class);
         startActivity(toCase);
     }
+    /*
+    public void toBot(View view) {
+        Intent toBot = new Intent(MainActivity.this, BotAshot.class);
+        startActivity(toBot);
+    }
+    */
 }
