@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".AuthActivity" />
-        <activity android:name=".proektoria_cases"></activity>
+        <activity android:name=".proektoria_cases" />
+        <activity android:name=".proektoria_companies"></activity>
     </application>
 
 </manifest>

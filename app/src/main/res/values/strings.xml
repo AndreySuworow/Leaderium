@@ -1,10 +1,4 @@
 <resources>
     <string name="app_name">Leaderium</string>
-
-    <string name="drawer_item_events">Мероприятия</string>
-    <string name="drawer_item_cases">Кейсы от работодателей</string>
-    <string name="drawer_item_employer">Работодатели</string>
-    <string name="drawer_item_courses">Обучающие курсы</string>
-    <string name="drawer_item_profile">Профиль</string>
-    <string name="drawer_item_bot">HR Ashot</string>
+    <string name="title_activity_proektoria_companies">proektoria_companies</string>
 </resources>
