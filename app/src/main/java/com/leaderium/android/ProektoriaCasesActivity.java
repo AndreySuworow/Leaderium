@@ -1,15 +1,11 @@
 package com.leaderium.android;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
 
@@ -28,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class proektoria_cases extends AppCompatActivity {
+public class ProektoriaCasesActivity extends AppCompatActivity {
 
 
     public MaterialListView mListView;
@@ -93,7 +89,7 @@ public class proektoria_cases extends AppCompatActivity {
                             @Override
                             public void onActionClicked(View view, Card card) {
                                 Log.d("ADDING", "CARD");
-                                Toast.makeText(proektoria_cases.this, "Added new card", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ProektoriaCasesActivity.this, "Added new card", Toast.LENGTH_SHORT).show();
                             }
                         }))
                 .endConfig()
@@ -107,7 +103,7 @@ public class proektoria_cases extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            dialog = new ProgressDialog(proektoria_cases.this);
+            dialog = new ProgressDialog(ProektoriaCasesActivity.this);
             dialog.setMessage("Загрузка...");
             dialog.setCancelable(false);
             dialog.show();
