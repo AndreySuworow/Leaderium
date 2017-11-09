@@ -24,9 +24,11 @@
         <activity android:name=".ProfileActivity" />
         <activity android:name=".EventsDetailActivity" />
         <activity android:name=".CoursesActivity" />
-        <activity android:name=".CoursesDetailActivity"></activity>
+        <activity android:name=".CoursesDetailActivity" />
         <activity android:name=".proektoria_cases" />
-        <activity android:name=".ProektoriaCompaniesActivity"></activity>
+        <activity android:name=".ProektoriaCompaniesActivity" />
+        <activity android:name=".full_description" />
+        <activity android:name=".BotAshot"></activity>
     </application>
 
 </manifest>
