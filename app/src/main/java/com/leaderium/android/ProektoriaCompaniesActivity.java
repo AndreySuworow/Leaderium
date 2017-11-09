@@ -7,10 +7,8 @@ import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.Toast;
 
 import com.dexafree.materialList.card.Card;
 import com.dexafree.materialList.card.CardProvider;
@@ -27,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class proektoria_companies extends AppCompatActivity {
+public class ProektoriaCompaniesActivity extends AppCompatActivity {
 
 
     public MaterialListView mListView;
@@ -104,7 +102,7 @@ public class proektoria_companies extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            dialog = new ProgressDialog(proektoria_companies.this);
+            dialog = new ProgressDialog(ProektoriaCompaniesActivity.this);
             dialog.setMessage("Загрузка...");
             dialog.setCancelable(false);
             dialog.show();

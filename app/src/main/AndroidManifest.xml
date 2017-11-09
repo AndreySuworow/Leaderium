@@ -26,7 +26,7 @@
         <activity android:name=".CoursesActivity" />
         <activity android:name=".CoursesDetailActivity"></activity>
         <activity android:name=".proektoria_cases" />
-        <activity android:name=".proektoria_companies"></activity>
+        <activity android:name=".ProektoriaCompaniesActivity"></activity>
     </application>
 
 </manifest>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.leaderium.android.proektoria_companies">
+    tools:context="com.leaderium.android.ProektoriaCompaniesActivity">
 
     <com.dexafree.materialList.view.MaterialListView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/material_listview"
