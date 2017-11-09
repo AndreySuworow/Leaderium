@@ -1,32 +1,21 @@
 package com.leaderium.android;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
-import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.Badgeable;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.Nameable;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -65,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             refresh_token = sPref.getString("refresh_token", "");
             user_id = sPref.getInt("user_id", 0);
         }
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
        /*
         setSupportActionBar(toolbar);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -93,6 +82,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ).withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
             @Override
             public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                switch (position){
+                    case 1:
+                        break;
+                    case 2:
+                        Intent intent = new Intent(MainActivity.this, ProektoriaCasesActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    case 6:
+                        break;
+                    case 7:
+                        break;
+                }
                 return false;
             }
         })
@@ -182,8 +189,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
     }
-    public void toCases (View view){
-        Intent toCase = new Intent(MainActivity.this, proektoria_companies.class);
+
+    public void toCases(View view) {
+        Intent toCase = new Intent(MainActivity.this, ProektoriaCasesActivity.class);
         startActivity(toCase);
     }
 }

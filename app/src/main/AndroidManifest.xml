@@ -19,6 +19,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".AuthActivity" />
+        <activity android:name=".ProektoriaCasesActivity" />
+        <activity android:name=".EventsActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".EventsDetailActivity" />
+        <activity android:name=".CoursesActivity" />
+        <activity android:name=".CoursesDetailActivity"></activity>
         <activity android:name=".proektoria_cases" />
         <activity android:name=".proektoria_companies"></activity>
     </application>
