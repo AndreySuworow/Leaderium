@@ -42,6 +42,7 @@ dependencies {
 
 
 
+
 configurations.all {
     resolutionStrategy.eachDependency { DependencyResolveDetails details ->
         def requested = details.requested

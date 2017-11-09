@@ -1,6 +1,7 @@
 package com.leaderium.android;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -88,8 +89,12 @@ public class ProektoriaCasesActivity extends AppCompatActivity {
                         .setListener(new OnActionClickListener() {
                             @Override
                             public void onActionClicked(View view, Card card) {
-                                Log.d("ADDING", "CARD");
-                                Toast.makeText(ProektoriaCasesActivity.this, "Added new card", Toast.LENGTH_SHORT).show();
+                                Intent toFullDescription = new Intent(ProektoriaCasesActivity.this, full_description.class);
+                                toFullDescription.putExtra("key", 1);
+                                toFullDescription.putExtra("id", id.get(position));
+                                toFullDescription.putExtra("img", img.get(position));
+                                toFullDescription.putExtra("title", title.get(position));
+                                startActivity(toFullDescription);
                             }
                         }))
                 .endConfig()

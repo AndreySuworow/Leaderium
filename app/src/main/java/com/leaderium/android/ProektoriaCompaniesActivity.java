@@ -86,9 +86,12 @@ public class ProektoriaCompaniesActivity extends AppCompatActivity {
                         .setListener(new OnActionClickListener() {
                             @Override
                             public void onActionClicked(View view, Card card) {
-                                Intent i = new Intent(Intent.ACTION_VIEW);
-                                i.setData(Uri.parse("http://proektoria.online/partners/"+id.get(position)));
-                                startActivity(i);
+                                Intent toFullDescription = new Intent(ProektoriaCompaniesActivity.this, full_description.class);
+                                toFullDescription.putExtra("key", 2);
+                                toFullDescription.putExtra("id", id.get(position));
+                                toFullDescription.putExtra("img", logo.get(position));
+                                toFullDescription.putExtra("title", title.get(position));
+                                startActivity(toFullDescription);
                             }
                         }))
                 .endConfig()
