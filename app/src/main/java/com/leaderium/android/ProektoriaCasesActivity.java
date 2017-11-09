@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -15,6 +16,12 @@ import com.dexafree.materialList.card.CardProvider;
 import com.dexafree.materialList.card.OnActionClickListener;
 import com.dexafree.materialList.card.action.TextViewAction;
 import com.dexafree.materialList.view.MaterialListView;
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.DividerDrawerItem;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.squareup.picasso.RequestCreator;
 
 import org.jsoup.Jsoup;
@@ -39,7 +46,59 @@ public class ProektoriaCasesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_proektoria_cases);
-        mListView = (MaterialListView) findViewById(R.id.material_listview);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar3);
+        new DrawerBuilder().withActivity(this)
+                .withToolbar(toolbar)
+                .withHeader(R.layout.drawer_header)
+                .addDrawerItems(
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_events).withIcon(FontAwesome.Icon.faw_calendar).withBadge("7").withIdentifier(1),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_cases).withIcon(FontAwesome.Icon.faw_check).withBadge("10+"),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_courses).withIcon(FontAwesome.Icon.faw_signal).withBadge("6").withIdentifier(2),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_employer).withIcon(FontAwesome.Icon.faw_suitcase),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_bot).withIcon(FontAwesome.Icon.faw_cogs),
+                        new DividerDrawerItem(),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_profile).withIcon(FontAwesome.Icon.faw_user).withIdentifier(1)
+                ).withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+            @Override
+            public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                switch (position) {
+                    case 1:
+                        finish();
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        Intent Courses_intent = new Intent(ProektoriaCasesActivity.this, ProektoriaCasesActivity.class);
+                        finish();
+                        startActivity(Courses_intent);
+                        break;
+                    case 4:
+                        Intent Companies_intent = new Intent(ProektoriaCasesActivity.this, ProektoriaCasesActivity.class);
+                        finish();
+                        startActivity(Companies_intent);
+                        break;
+                    case 5:
+                        Intent hr_intent = new Intent(ProektoriaCasesActivity.this, ProfileActivity.class);
+                        finish();
+                        startActivity(hr_intent);
+                        break;
+                    case 6:
+                        break;
+                    case 7:
+                        Intent Profile_intent = new Intent(ProektoriaCasesActivity.this, ProfileActivity.class);
+                        finish();
+                        startActivity(Profile_intent);
+                        break;
+                }
+                return false;
+            }
+
+        }).withSelectedItem(1).build();
+
+        mListView = (MaterialListView)
+
+                findViewById(R.id.material_listview);
 
         ProektoriaCases parser = new ProektoriaCases();
         parser.execute();
@@ -55,17 +114,16 @@ public class ProektoriaCasesActivity extends AppCompatActivity {
     }
 
     public Card setCases(final int position) {
-        for (int i = 0; i < description.size(); i++){
-            if (description.get(i).length() > 30){
-                description.get(i).replaceAll(Pattern.quote(description.get(i)), description.get(i).substring(0,30));
+        for (int i = 0; i < description.size(); i++) {
+            if (description.get(i).length() > 30) {
+                description.get(i).replaceAll(Pattern.quote(description.get(i)), description.get(i).substring(0, 30));
             }
         }
-        for (int i = 0; i < title.size(); i++){
-            if (title.get(i).length() > 10){
-                title.get(i).replaceAll(Pattern.quote(title.get(i)), title.get(i).substring(0,10));
+        for (int i = 0; i < title.size(); i++) {
+            if (title.get(i).length() > 10) {
+                title.get(i).replaceAll(Pattern.quote(title.get(i)), title.get(i).substring(0, 10));
             }
         }
-
 
 
         StringBuilder descriptionCase = new StringBuilder();
@@ -77,14 +135,14 @@ public class ProektoriaCasesActivity extends AppCompatActivity {
                 .setTitle(title.get(position))
                 .setDescription(description.get(position))
                 .setDrawable(img.get(position))
-                .setDrawableConfiguration(new CardProvider.OnImageConfigListener() {
+                /*.setDrawableConfiguration(new CardProvider.OnImageConfigListener() {
                     @Override
                     public void onImageConfigure(@NonNull RequestCreator requestCreator) {
                         requestCreator.resize(65,40);
                     }
-                })
+                })*/
                 .addAction(R.id.left_text_button, new TextViewAction(this)
-                        .setText("Подробнее...")
+                        .setText("Подробнее")
                         .setTextResourceColor(R.color.black_button)
                         .setListener(new OnActionClickListener() {
                             @Override
@@ -128,13 +186,13 @@ public class ProektoriaCasesActivity extends AppCompatActivity {
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < id_edit_mas.length; i++) {
                     sb.append(id_edit_mas[i]);
-                    if (sb.toString().endsWith("href=\"/projects/")){
-                        sb.delete(0,sb.length());
-                        while (id_edit_mas[i].endsWith("\"") == false){
+                    if (sb.toString().endsWith("href=\"/projects/")) {
+                        sb.delete(0, sb.length());
+                        while (id_edit_mas[i].endsWith("\"") == false) {
                             i++;
                             sb.append(id_edit_mas[i]);
                         }
-                        id.add(sb.delete(sb.length()-2, sb.length()).toString());
+                        id.add(sb.delete(sb.length() - 2, sb.length()).toString());
                         sb.delete(0, sb.length());
                     }
                 }
@@ -142,9 +200,9 @@ public class ProektoriaCasesActivity extends AppCompatActivity {
 
                 // IMG
                 // FORMAT: http://209315.selcdn.ru/projectoria/95192c98/23361ec3/4331c736291e.png
-                for (int i = 0; i < doc.select("img").attr("src").length(); i++){
+                for (int i = 0; i < doc.select("img").attr("src").length(); i++) {
                     String img_url_to_check = doc.select("img").get(i).attr("src").toString();
-                    if (img_url_to_check.contains("209315.selcdn.ru")){
+                    if (img_url_to_check.contains("209315.selcdn.ru")) {
                         img.add(img_url_to_check);
                     }
                 }
@@ -158,7 +216,7 @@ public class ProektoriaCasesActivity extends AppCompatActivity {
 
                 // TITLE
                 // FORMAT: Создание LADA 4x4 Arktika. Российский внедорожник для автономных зимних экспедиций в условиях крайнего севера.
-                for (int i = 0; i < doc.select("div.catalog-block-item-title").select("a").size(); i++){
+                for (int i = 0; i < doc.select("div.catalog-block-item-title").select("a").size(); i++) {
                     title.add(doc.select("div.catalog-block-item-title").select("a").get(i).text().trim());
                 }
 
@@ -168,10 +226,10 @@ public class ProektoriaCasesActivity extends AppCompatActivity {
 //                    jobs.add(doc.select("div.catalog-block-item-properties-values").get(i).text().trim());
 //                }
 
-                System.out.println("id: " + id.size()+"\n"+
-                "img: " + img.size() + "\n"+
-                "desc: " + description.size() + "\n" +
-                "title: " + title.size() + "\n");
+                System.out.println("id: " + id.size() + "\n" +
+                        "img: " + img.size() + "\n" +
+                        "desc: " + description.size() + "\n" +
+                        "title: " + title.size() + "\n");
 //                "jobs: " + jobs.size() + "\n");
 
             } catch (IOException e) {

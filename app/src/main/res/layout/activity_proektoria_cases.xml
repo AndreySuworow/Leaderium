@@ -8,17 +8,25 @@
     tools:context="com.leaderium.android.ProektoriaCasesActivity">
 
     <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
+        android:theme="?attr/actionBarTheme">
+
+        <TextView
+            android:id="@+id/Profile_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Последние кейсы"
+            android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title" />
+    </android.support.v7.widget.Toolbar>
 
     <com.dexafree.materialList.view.MaterialListView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/material_listview"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
         app:column_count="1" />
 
 </LinearLayout>
