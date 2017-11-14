@@ -38,8 +38,8 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-         nameView = findViewById(R.id.name_view);
-         companyView = findViewById(R.id.work_view);
+        nameView = findViewById(R.id.name_view);
+        companyView = findViewById(R.id.work_view);
         workView = findViewById(R.id.profession_view);
         sPref = getSharedPreferences("auth_settings", MODE_PRIVATE);
 
@@ -67,7 +67,7 @@ public class ProfileActivity extends AppCompatActivity {
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");
                 urlConnection.connect();
-                Log.wtf("url",url.toString());
+                Log.wtf("url", url.toString());
                 InputStream inputStream = urlConnection.getInputStream();
                 StringBuffer buffer = new StringBuffer();
 
@@ -94,17 +94,17 @@ public class ProfileActivity extends AppCompatActivity {
 
             try {
                 jobs = new JSONArray(resultJson2);
-                Log.wtf("af",resultJson2);
+                Log.wtf("af", resultJson2);
                 RadioGroup rg = findViewById(R.id.jobs_group);
                 rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                        int selectedId  = radioGroup.getCheckedRadioButtonId();
+                        int selectedId = radioGroup.getCheckedRadioButtonId();
                         RadioButton radioSexButton = (RadioButton) findViewById(selectedId);
                         String text = radioSexButton.getText().toString();
                         SharedPreferences.Editor ed = sPref.edit();
                         ed.putString("selected_job", text);
-                        Log.wtf("ddd",text);
+                        Log.wtf("ddd", text);
                         Intent authIntent = new Intent();
                         authIntent.putExtra("selected_job", text);
                         setResult(RESULT_OK, authIntent);
@@ -114,7 +114,7 @@ public class ProfileActivity extends AppCompatActivity {
                 });
                 for (int i = 0; i < jobs.length(); i++) {
                     RadioButton newRadioButton = new RadioButton(ProfileActivity.this);
-                    Log.wtf("af",jobs.getString(i));
+                    Log.wtf("af", jobs.getString(i));
                     newRadioButton.setText(jobs.getString(i));
                     rg.addView(newRadioButton);
                 }

@@ -73,7 +73,7 @@ public class TextViewAct extends Action {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mListener != null) {
+                if (mListener != null) {
                     mListener.onActionClicked(view, card);
                 }
             }

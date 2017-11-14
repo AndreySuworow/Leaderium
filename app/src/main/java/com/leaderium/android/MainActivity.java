@@ -199,7 +199,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setDescription(description.get(position))
                 .setDrawable(img.get(position))
 
-                .addAction(R.id.title, new TextViewAct (this)
+                .addAction(R.id.title, new TextViewAct(this)
                         .setText(title.get(position))
                         .setTextResourceColor(R.color.md_white_1000)
                         .setListener(new OnActionClickListener() {
@@ -232,7 +232,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
             try {
-                URL url = new URL("https://leaderium.herokuapp.com/get_similar_by_job?access_token=" + access_token + "&job_title=" + URLEncoder.encode(job) );
+                URL url = new URL("https://leaderium.herokuapp.com/get_similar_by_job?access_token=" + access_token + "&job_title=" + URLEncoder.encode(job));
 
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");

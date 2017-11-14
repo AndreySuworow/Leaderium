@@ -96,9 +96,7 @@ public class ProektoriaCasesActivity extends AppCompatActivity {
 
         }).withSelectedItem(1).build();
 
-        mListView = (MaterialListView)
-
-                findViewById(R.id.material_listview);
+        mListView = findViewById(R.id.material_listview);
 
         ProektoriaCases parser = new ProektoriaCases();
         parser.execute();

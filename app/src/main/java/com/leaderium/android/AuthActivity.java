@@ -33,6 +33,7 @@ public class AuthActivity extends AppCompatActivity {
     WebView web;
     String authCode;
     private Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +74,8 @@ public class AuthActivity extends AppCompatActivity {
             }
         });
     }
-    private void finishActivity(){
+
+    private void finishActivity() {
         finish();
     }
 
@@ -125,7 +127,7 @@ public class AuthActivity extends AppCompatActivity {
                 String refresh_token = dataJsonObj.getString("refresh_token");
                 int user_id = dataJsonObj.getInt("user_id");
 
-                sPref = getSharedPreferences("auth_settings",MODE_PRIVATE);
+                sPref = getSharedPreferences("auth_settings", MODE_PRIVATE);
                 SharedPreferences.Editor ed = sPref.edit();
                 ed.putString("access_token", access_token);
                 ed.putInt("expires_in", expires_in);

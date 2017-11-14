@@ -55,12 +55,11 @@ public class full_description extends AppCompatActivity {
         // 3 - Мероприятие
 
 
-
         switch (from) {
             case 1:
                 full_URL = full_URL + "projects/" + id;
                 Handler uiHandler1 = new Handler(Looper.getMainLooper());
-                uiHandler1.post(new Runnable(){
+                uiHandler1.post(new Runnable() {
                     @Override
                     public void run() {
                         Picasso.with(full_description.this)
@@ -72,7 +71,7 @@ public class full_description extends AppCompatActivity {
             case 2:
                 full_URL = full_URL + "partners/" + id;
                 Handler uiHandler2 = new Handler(Looper.getMainLooper());
-                uiHandler2.post(new Runnable(){
+                uiHandler2.post(new Runnable() {
                     @Override
                     public void run() {
                         Picasso.with(full_description.this)
@@ -83,7 +82,7 @@ public class full_description extends AppCompatActivity {
                 break;
             case 3:
                 Handler uiHandler3 = new Handler(Looper.getMainLooper());
-                uiHandler3.post(new Runnable(){
+                uiHandler3.post(new Runnable() {
                     @Override
                     public void run() {
                         Picasso.with(full_description.this)
@@ -99,7 +98,7 @@ public class full_description extends AppCompatActivity {
         ProektoriaParser parser = new ProektoriaParser();
         parser.execute();
 
-        System.out.println("From main: "+main_text);
+        System.out.println("From main: " + main_text);
         desc.setText(main_text);
     }
 
@@ -125,18 +124,18 @@ public class full_description extends AppCompatActivity {
 
             try {
                 Document doc = Jsoup.connect(full_URL).get();
-                switch (from){
+                switch (from) {
                     case 1:
                         final StringBuilder body_text = new StringBuilder();
-                        body_text.delete(0,body_text.length());
+                        body_text.delete(0, body_text.length());
                         body_text.append(doc.select("div.wrap").get(2).html().replaceAll("<div class=\"title-red\">\n" +
-                                " ","<b>").replaceAll("\n" +
-                                "</div> ","</b>\n").replaceAll("<li> ","<li>").replaceAll("<li>","<li>  ").replaceAll("\n\n","\n").replaceAll("[\\n]{2,}", "\n").replaceAll("<b>Актуальность</b>", "Актуальность").trim());
+                                " ", "<b>").replaceAll("\n" +
+                                "</div> ", "</b>\n").replaceAll("<li> ", "<li>").replaceAll("<li>", "<li>  ").replaceAll("\n\n", "\n").replaceAll("[\\n]{2,}", "\n").replaceAll("<b>Актуальность</b>", "Актуальность").trim());
 
                         body_text.append(doc.select("div.wrap").get(3).html().replaceAll("<div class=\"title-red\">\n" +
-                                " ","<b>").replaceAll("\n" +
-                                "</div> ","</b>\n").replaceAll(" Описание","<b>").replaceAll("\n" +
-                                "\n","\n").replaceAll("<li> ","<li>").replaceAll("<li>","<li>  ").replaceAll("\n\n","\n").replaceAll("[\\n]{2,}", "\n").replaceAll("<br>","").replaceAll("<ol>","\n").replaceAll("<li>","  - ").replaceAll("</li>","\n").replaceAll("<ul>","\n").replaceAll("<p>","").replaceAll("</p>","").replaceAll("</b>","\n").replaceAll("<b>","\n\n").replaceAll("</ul>","").replaceAll("</ol>","").replaceAll("<b>","").replaceAll("</b>","").replaceAll("Описание","\n\nОписание").replaceAll("Требования","\nТребования").replaceAll("Результат","\nРезультат").trim());
+                                " ", "<b>").replaceAll("\n" +
+                                "</div> ", "</b>\n").replaceAll(" Описание", "<b>").replaceAll("\n" +
+                                "\n", "\n").replaceAll("<li> ", "<li>").replaceAll("<li>", "<li>  ").replaceAll("\n\n", "\n").replaceAll("[\\n]{2,}", "\n").replaceAll("<br>", "").replaceAll("<ol>", "\n").replaceAll("<li>", "  - ").replaceAll("</li>", "\n").replaceAll("<ul>", "\n").replaceAll("<p>", "").replaceAll("</p>", "").replaceAll("</b>", "\n").replaceAll("<b>", "\n\n").replaceAll("</ul>", "").replaceAll("</ol>", "").replaceAll("<b>", "").replaceAll("</b>", "").replaceAll("Описание", "\n\nОписание").replaceAll("Требования", "\nТребования").replaceAll("Результат", "\nРезультат").trim());
                         runOnUiThread(new Runnable() {
                             public void run() {
                                 System.out.println(body_text.toString());
@@ -146,15 +145,15 @@ public class full_description extends AppCompatActivity {
                         break;
                     case 2:
                         final StringBuilder body_text2 = new StringBuilder();
-                        body_text2.delete(0,body_text2.length());
+                        body_text2.delete(0, body_text2.length());
                         body_text2.append(doc.select("div.wrap").get(2).html().replaceAll("<div class=\"title-red\">\n" +
-                                " ","<b>").replaceAll("\n" +
-                                "</div> ","</b>\n").replaceAll("<li> ","<li>").replaceAll("<li>","<li>  ").replaceAll("\n\n","\n").replaceAll("[\\n]{2,}", "\n").replaceAll("<b>Актуальность</b>", "Актуальность").trim());
+                                " ", "<b>").replaceAll("\n" +
+                                "</div> ", "</b>\n").replaceAll("<li> ", "<li>").replaceAll("<li>", "<li>  ").replaceAll("\n\n", "\n").replaceAll("[\\n]{2,}", "\n").replaceAll("<b>Актуальность</b>", "Актуальность").trim());
 
                         body_text2.append(doc.select("div.wrap").get(3).html().replaceAll("<div class=\"title-red\">\n" +
-                                " ","<b>").replaceAll("\n" +
-                                "</div> ","</b>\n").replaceAll(" Описание","<b>").replaceAll("\n" +
-                                "\n","\n").replaceAll("<li> ","<li>").replaceAll("<li>","<li>  ").replaceAll("\n\n","\n").replaceAll("[\\n]{2,}", "\n").replaceAll("<br>","").replaceAll("<ol>","\n").replaceAll("<li>","  - ").replaceAll("</li>","\n").replaceAll("<ul>","\n").replaceAll("<p>","").replaceAll("</p>","").replaceAll("</b>","\n").replaceAll("<b>","\n\n").replaceAll("</ul>","").replaceAll("</ol>","").replaceAll("<b>","").replaceAll("</b>","").replaceAll("Описание","\n\nОписание").replaceAll("Требования","\nТребования").replaceAll("Результат","\nРезультат").trim());
+                                " ", "<b>").replaceAll("\n" +
+                                "</div> ", "</b>\n").replaceAll(" Описание", "<b>").replaceAll("\n" +
+                                "\n", "\n").replaceAll("<li> ", "<li>").replaceAll("<li>", "<li>  ").replaceAll("\n\n", "\n").replaceAll("[\\n]{2,}", "\n").replaceAll("<br>", "").replaceAll("<ol>", "\n").replaceAll("<li>", "  - ").replaceAll("</li>", "\n").replaceAll("<ul>", "\n").replaceAll("<p>", "").replaceAll("</p>", "").replaceAll("</b>", "\n").replaceAll("<b>", "\n\n").replaceAll("</ul>", "").replaceAll("</ol>", "").replaceAll("<b>", "").replaceAll("</b>", "").replaceAll("Описание", "\n\nОписание").replaceAll("Требования", "\nТребования").replaceAll("Результат", "\nРезультат").trim());
                         runOnUiThread(new Runnable() {
                             public void run() {
                                 System.out.println(body_text2.toString());
@@ -164,7 +163,7 @@ public class full_description extends AppCompatActivity {
                         break;
                     case 3:
                         final StringBuilder body_text3 = new StringBuilder();
-                        body_text3.delete(0,body_text3.length());
+                        body_text3.delete(0, body_text3.length());
                         body_text3.append(doc.select("div.program").text());
                         runOnUiThread(new Runnable() {
                             public void run() {
@@ -184,7 +183,7 @@ public class full_description extends AppCompatActivity {
 
     }
 
-    public void EverithingIsOK(String descr_text){
+    public void EverithingIsOK(String descr_text) {
         desc.setText(main_text);
     }
 

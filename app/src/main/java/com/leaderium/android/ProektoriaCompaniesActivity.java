@@ -47,7 +47,6 @@ public class ProektoriaCompaniesActivity extends AppCompatActivity {
     }
 
 
-
     public void fillArray() {
         List<Card> cards = new ArrayList<>();
         for (int i = 0; i < 50; i++) {
@@ -57,9 +56,9 @@ public class ProektoriaCompaniesActivity extends AppCompatActivity {
     }
 
     public Card setCases(final int position) {
-        for (int i = 0; i < description.size(); i++){
-            if (description.get(i).length() > 10){
-                description.get(i).replaceAll(Pattern.quote(description.get(i)), description.get(i).substring(0,10)+"...");
+        for (int i = 0; i < description.size(); i++) {
+            if (description.get(i).length() > 10) {
+                description.get(i).replaceAll(Pattern.quote(description.get(i)), description.get(i).substring(0, 10) + "...");
             }
             //description.get(i).
         }
@@ -120,7 +119,7 @@ public class ProektoriaCompaniesActivity extends AppCompatActivity {
                 // ID
                 // FORMAT: rosteh
                 for (int i = 0; i < doc.select("div.catalog-block-item-title").size(); i++) {
-                    id.add(doc.select("div.catalog-block-item-title").select("a").get(i).attr("href").replaceAll("/partners/","").replaceAll("/","").trim());
+                    id.add(doc.select("div.catalog-block-item-title").select("a").get(i).attr("href").replaceAll("/partners/", "").replaceAll("/", "").trim());
                 }
 
                 // LOGO
